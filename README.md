@@ -25,3 +25,5 @@ mv ~/.vimrc ~/.vimrc.backup
 # Clone this repo and link the vimrc
 git clone https://github.com/rcfalar/.vimrc.git ~/.vim
 ln -s ~/.vim/.vimrc ~/.vimrc
+
+#or like just copy and paste it, its not a lot
