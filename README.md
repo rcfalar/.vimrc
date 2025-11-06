@@ -23,5 +23,5 @@ A simple, efficient Vim setup optimized for productivity and ease of use.
 mv ~/.vimrc ~/.vimrc.backup
 
 # Clone this repo and link the vimrc
-git clone <repo_url> ~/.vim
+git clone https://github.com/rcfalar/.vimrc.git ~/.vim
 ln -s ~/.vim/.vimrc ~/.vimrc
