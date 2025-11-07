@@ -975,4 +975,3 @@ hi link pandocMetadataTitle             pandocMetadata
 " THE SOFTWARE.
 " 
 "}}}
-
