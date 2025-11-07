@@ -1,5 +1,5 @@
 " ════════════════════════════════════════════════════════════════════════════════════════════════
-"  Last Modified: 11/06/2025 - RCF
+"  Last Modified: 11/07/2025 - RCF
 "  simple .vimrc Configuration
 " ════════════════════════════════════════════════════════════════════════════════════════════════
 
@@ -9,7 +9,7 @@
 
 set nocompatible                    " Disables old vi compatibility
 filetype plugin indent on           " Enables filetype detection, plugins, and indent
-syntax on                           " Enables syntax highlighting
+syntax enable                       " Enables syntax highlighting
 set encoding=utf-8                  " Uses UTF-8 encoding
 set number                          " Shows line numbers
 set relativenumber                  " Shows relative line numbers
@@ -24,7 +24,8 @@ set clipboard=unnamed           	" Uses system clipboard
 colorscheme wildcharm				" Sets default color theme
 let mapleader = " "                 " Sets leader key to spacebar
 set showtabline=2					" Always shows the tab line at the top
-set showmatch						" Highlights matching brackets
+set ttyfast							" Optimizes redraws for better performance, i think
+set mouse=							" Completely disables mouse support
 
 " ────────────────────────────────────────────────────────────────────────────────────────────────
 "  Indentation & Tabs
@@ -58,12 +59,8 @@ set scrolloff=12                    " Keep 12 lines visible around cursor
 " ────────────────────────────────────────────────────────────────────────────────────────────────
 
 set laststatus=2                    						" Always show status line
-set statusline=%<%f\ [R.C.F]%h%w%r           				" File info on left (with my initials)
-set statusline+=%=                  						" Switch to middle
-set statusline+=line\ %l/%L\ \|\ %p%%\ \|\  				" Line count and percentage
-set statusline+=%{strftime(\"\%m/\%d/\%y\ \%H:\%M\")}\ %m  	" Date, time, modified flag
+set statusline=%<%f\ [R.C.F]%h%w%r%=%l/%L\ \|\ %p%%\ \|\ %m
 
-" ────────────────────────────────────────────────────────────────────────────────────────────────
 "  Split Navigation
 " ────────────────────────────────────────────────────────────────────────────────────────────────
 
@@ -92,8 +89,8 @@ set whichwrap+=<,>
 set confirm                         " Ask before quitting unsaved file
 set history=1000                    " Command history size
 set undofile                        " Persistent undo
-set undolevels=10000                " More undo history
-set undoreload=10000                " Save more lines for undo on buffer reload
+set undolevels=5000                " More undo history
+set undoreload=5000                " Save more lines for undo on buffer reload
 set backupdir=~/.vim/tmp,.          " Backup directory
 set directory=~/.vim/tmp,.          " Swap file directory
 
