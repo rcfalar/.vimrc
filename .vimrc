@@ -15,7 +15,7 @@ set number                          " Shows line numbers
 set relativenumber                  " Shows relative line numbers
 set showcmd                         " Shows last command in status line
 set showmode                        " Shows current mode
-set wrap                            " Enables word wrapping
+set linebreak						" Enables word wrapping
 set textwidth=0						" Fully disables auto wrapping
 set ruler                           " Shows line/column info
 set cursorline                      " Highlights current line
@@ -23,6 +23,8 @@ set hidden                          " Allows switching buffers without saving
 set clipboard=unnamed           	" Uses system clipboard
 colorscheme wildcharm				" Sets default color theme
 let mapleader = " "                 " Sets leader key to spacebar
+set showtabline=2					" Always shows the tab line at the top
+set showmatch						" Highlights matching brackets
 
 " ────────────────────────────────────────────────────────────────────────────────────────────────
 "  Indentation & Tabs
@@ -69,6 +71,19 @@ nnoremap <C-h> <C-w>h               " Move to left split
 nnoremap <C-j> <C-w>j               " Move to split below
 nnoremap <C-k> <C-w>k               " Move to split above
 nnoremap <C-l> <C-w>l               " Move to right split
+
+" ────────────────────────────────────────────────────────────────
+" Horizontal movement wrap
+" ────────────────────────────────────────────────────────────────
+
+" Pressing h at start of line goes to the end of the line above
+nnoremap <expr> h col('.') == 1 ? 'k$' : 'h'
+
+" Pressing l at end of line goes to the first column of the next line
+nnoremap <expr> l col('.') == col('$') - 1 ? 'j0' : 'l'
+
+" Also lets arrows keys do the same
+set whichwrap+=<,>
 
 " ────────────────────────────────────────────────────────────────────────────────────────────────
 "  Quality of Life
@@ -208,6 +223,7 @@ nnoremap H ^												" Moves to beginning of the line
 nnoremap L $												" Moves to the end of hte line
 nnoremap J }												" Moves 1 paragraph down (whitespace)
 nnoremap K {												" Moves 1 paragrah up (whitespace)
+nnoremap <leader>f :call search(input("Search: "), 'W')<CR>
 
 " Original Vim screen/navigation behavior on g-prefixed keys
 nnoremap gH H
@@ -222,7 +238,6 @@ vnoremap <leader>j :m '>+1<CR>gv=gv     					" Move selection down
 vnoremap <leader>k :m '<-2<CR>gv=gv     					" Move selection up
 nnoremap <leader>o :put _<CR>								" Adds line below in normal mode
 nnoremap <leader>O :put! _<CR>								" Adds line above in normal mode
-
 
 " BUFFER MANAGEMENT
 nnoremap <leader>n :bnext<CR>                               " Next buffer
